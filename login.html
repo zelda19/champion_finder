@@ -1,116 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LoL Finder</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #091428, #0A1428);
-      color: #C8AA6E;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .login-container {
-      background: rgba(9, 20, 40, 0.9);
-      padding: 40px;
-      border-radius: 10px;
-      border: 2px solid #C8AA6E;
-      box-shadow: 0 0 20px rgba(200, 170, 110, 0.3);
-      text-align: center;
-      width: 300px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo {
-      margin-bottom: 20px;
-      width: 80%;
-      max-width: 200px;
-    }
-
-    h1 {
-      color: #C8AA6E;
-      margin-bottom: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #785A28;
-      border-radius: 5px;
-      background: rgba(9, 20, 40, 0.8);
-      color: #C8AA6E;
-      font-size: 14px;
-      outline: none;
-      transition: all 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    input:focus {
-      border-color: #C8AA6E;
-      box-shadow: 0 0 10px rgba(200, 170, 110, 0.3);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      margin: 20px 0 10px;
-      background: #C8AA6E;
-      border: none;
-      border-radius: 5px;
-      color: #091428;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    button:hover {
-      background: #785A28;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
-  </style>
+    <title>LoL Champion Finder</title>
+    <link rel="stylesheet" href="champion.css">
 </head>
 <body>
-  <div class="login-container">
-    <h1>LoL Finder</h1>
-    
-    <input type="text" id="username" placeholder="Username" required>
-    <input type="password" id="password" placeholder="Password" required>
-    
-    <button onclick="login()">Sign In</button>
-  </div>
-  
-  <script>
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      
-      if (username === "admin" && password === "zelda") {
-        window.location.href = "champion.html";
-      } else {
-        alert("Invalid username or password. Please try again.");
-      }
-    }
-  </script>
+    <div class="app-container">
+        <h1>League of Legends Champion Finder</h1>
+        
+        <div class="search-container">
+            <input type="text" id="championSearch" placeholder="Search champions..." oninput="filterChampions()">
+            <button class="search-button" onclick="showAllChampions()">Show All</button>
+        </div>
+
+        <div class="filter-container">
+            <div class="role-filters">
+                <button class="role-filter-button" data-role="all" onclick="filterByRole('all')">All</button>
+                <button class="role-filter-button" data-role="Fighter" onclick="filterByRole('Fighter')">Fighter</button>
+                <button class="role-filter-button" data-role="Tank" onclick="filterByRole('Tank')">Tank</button>
+                <button class="role-filter-button" data-role="Mage" onclick="filterByRole('Mage')">Mage</button>
+                <button class="role-filter-button" data-role="Assassin" onclick="filterByRole('Assassin')">Assassin</button>
+                <button class="role-filter-button" data-role="Marksman" onclick="filterByRole('Marksman')">Marksman</button>
+                <button class="role-filter-button" data-role="Support" onclick="filterByRole('Support')">Support</button>
+            </div>
+        </div>
+
+        <div id="champion-grid" class="champion-grid">
+            <!-- Champions will be loaded here -->
+            <div class="loading"></div>
+        </div>
+
+        <div id="champion-info" class="hidden"></div>
+    </div>
+
+    <script src="champion.js"></script>
 </body>
 </html>
