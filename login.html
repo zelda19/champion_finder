@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOl</title>
+    <style>
+        /* styling gaiz */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Beaufort for LOL', Arial, sans-serif;
+            background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* login back */
+        .login-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 300px;
+            position: relative;
+            z-index: 2;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444; 
+            border-radius: 5px;
+            background: #1a1a1a;
+            color: white;
+            font-family: 'Beaufort for LOL', Arial, sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #bd2020;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #bd2020;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-family: 'Beaufort for LOL', Arial, sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #8a1717;
+        }
+
+        .links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #bd2020;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .links a:hover {
+            color: #8a1717;
+        }
+    </style>
+</head>
+<body>
+    <!-- yung pic'di gumagana sa kin amp -->
+    <div class="login-container">
+        <!--wag na kaya to? -->
+        <img src="league.jpg">
+        
+        <!-- username at password -->
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Enter Password" required>
+        
+        <button onclick="login()">Sign In</button>
+        
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "admin" && password === "password") {
+                // champion page
+                window.location.href = "champion.html";
+            } else {
+                alert("error");
+            }
+        }
+    </script>
+</body>
+</html>
